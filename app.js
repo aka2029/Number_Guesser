@@ -32,11 +32,23 @@ guessBtn.addEventListener("click", function() {
   // Validate
   if (isNaN(guess) || guess < min || guess > max) {
     // use this function isNaN() instead of writing guess === NaN
-    setMessage(`Please enter a number between ${min} and ${max}`);
+    setMessage(`Please enter a number between ${min} and ${max}`, "red");
+  }
+
+  // Validate
+  if (guess === winningNum) {
+    // Disable the input
+    guessInput.disabled = true;
+    //change border color
+    guessInput.style.borderColor = "green";
+    // Set Message
+    setMessage(`${winningNum} is correct! YOU WIN!`, "green");
+  } else {
   }
 });
 
 //set message
-function setMessage(msg) {
+function setMessage(msg, color) {
+  message.style.color = color;
   message.textContent = msg;
 }
