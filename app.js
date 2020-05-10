@@ -25,6 +25,13 @@ const game = document.querySelector("#game"),
 minNum.textContent = min;
 maxNum.textContent = max;
 
+// Play again event listener
+game.addEventListener("mousedown", function(e) {
+  if (e.target.className === "play-again") {
+    window.location.reload();
+  }
+});
+
 // Listen for guess
 guessBtn.addEventListener("click", function() {
   let guess = parseInt(guessInput.value);
@@ -79,6 +86,10 @@ function gameOver(won, msg) {
   message.style.color = color;
   // Set Message
   setMessage(msg);
+
+  // Play Again
+  guessBtn.value = "Play Again";
+  guessBtn.className += "play-again"; //here we are appending ie if it already has a class the we'll add this with it
 }
 
 //set message
